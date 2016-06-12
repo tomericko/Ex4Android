@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ex4</string>
+    <string name="login">כניסה</string>
+    <string name="signup">הרשמה</string>
+</resources>
