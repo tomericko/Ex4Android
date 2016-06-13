@@ -68,7 +68,7 @@ public class SignUp extends AppCompatActivity {
     private void attemptRegister() {
         boolean cancel = false;
         View focusView = null;
-        nameTxt = (EditText) findViewById(R.id.nameTxt);
+        nameTxt = (EditText) findViewById(R.id.usernameTxt);
         passwordTxt = (EditText) findViewById(R.id.passwordTxt);
         emailTxt = (EditText) findViewById(R.id.emailTxt);
         realnameTxt = (EditText) findViewById(R.id.realnameTxt);
@@ -81,7 +81,7 @@ public class SignUp extends AppCompatActivity {
         String inputPassword = passwordTxt.getText().toString();
         String inputRealname = realnameTxt.getText().toString();
         String inputEmail = emailTxt.getText().toString();
-        String inputIcon = iconSpinner.getSelectedItem().toString();
+        String inputIcon = "null";//iconSpinner.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(inputUsername)) {
             nameTxt.setError(getString(R.string.error_field));
@@ -99,14 +99,14 @@ public class SignUp extends AppCompatActivity {
             emailTxt.setError(getString(R.string.error_field));
             focusView = emailTxt;
             cancel = true;
-        } else if (TextUtils.isEmpty(inputPassword)) {
+        } /*else if (TextUtils.isEmpty(inputPassword)) {
             TextView errorText = (TextView)iconSpinner.getSelectedView();
             errorText.setError(getString(R.string.error_field));
             errorText.setTextColor(Color.RED);//just to highlight that this is an error
             errorText.setText(getString(R.string.error_field));
             focusView = iconSpinner;
             cancel = true;
-        }
+        }*/
 
 
         if (cancel) {
@@ -162,7 +162,7 @@ public class SignUp extends AppCompatActivity {
             JSONObject parameters = new JSONObject();
             try {
 
-                URL url = new URL("http://10.0.2.2:8080/MyFormServlet?username=" + this.name + "&password=" + this.password+
+                URL url = new URL("http://10.0.2.2:8080/CreateAccountServlet?username=" + this.name + "&password=" + this.password+
                                     "&email="+this.email+"&realname="+ this.realname + "&icon="+this.icon);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
@@ -181,6 +181,7 @@ public class SignUp extends AppCompatActivity {
                     }
 
                     JSONObject jsonRespones = new JSONObject(responesStr.toString());
+                    //If the user added successfuly, create it here.
                     if(jsonRespones.getString("answer").equals("successful")){
                         return new User(this.name,this.password,this.email,this.icon,this.realname);
                     }

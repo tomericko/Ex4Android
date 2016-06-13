@@ -27,7 +27,7 @@
             android:textSize="20sp"
             android:layout_weight="2"/>
         <EditText
-            android:id="@+id/passwordTxtTxt"
+            android:id="@+id/passwordTxt"
             android:padding="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
