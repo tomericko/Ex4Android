@@ -7,49 +7,64 @@
     tools:context="com.example.tomer.ex4.SignUp"
     android:background="@drawable/splash_bg">
 
+    <ProgressBar
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:id="@+id/register_progress_bar"/>
+
     <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
             android:id="@+id/usernameTxt"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
-            android:textSize="20sp"/>
-        <TextView
+            android:textSize="20sp"
+            android:layout_weight="2"/>
+        <EditText
             android:id="@+id/passwordTxtTxt"
             android:padding="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textSize="20sp"/>
-        <TextView
+            android:textSize="20sp"
+            android:layout_weight="2"/>
+        <EditText
             android:id="@+id/emailTxt"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/name"
+            android:textSize="20sp"
+            android:layout_weight="2"/>
+        <EditText
+            android:id="@+id/realnameTxt"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:layout_weight="2"/>
         <Spinner
+            android:id="@+id/iconSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:prompt="@string/icon"
-            android:spinnerMode="dialog">
+            android:spinnerMode="dialog"
+            android:layout_weight="2">
 
         </Spinner>
 
 
         <Button
+            android:id="@+id/registerBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login"
+            android:layout_weight="1"
             android:text="@string/signup"
             />
 

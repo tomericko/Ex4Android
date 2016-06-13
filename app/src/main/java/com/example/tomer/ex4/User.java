@@ -19,9 +19,24 @@ public class User implements Serializable {
     }
 
     public User(JSONObject js) throws JSONException {
-        userName = js.getString("name");
-        password = js.getString("password");
+        try {
+            userName = js.getString("username");
+            password = js.getString("password");
+            email = js.getString("email");
+            icon = js.getString("icon");
+            realName = js.getString("realname");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
+    public User(String name, String password, String email, String icon, String realname) throws JSONException {
+            this.userName = name;
+            this.password = password;
+            this.email = email;
+            this.realName = realname;
+            this.icon = icon;
+    }
+
 
     public String getUserName() {
         return userName;
