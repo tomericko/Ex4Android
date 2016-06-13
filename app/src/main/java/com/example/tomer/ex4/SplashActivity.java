@@ -2,10 +2,12 @@ package com.example.tomer.ex4;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -21,10 +23,19 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        HideActionBar();
         this.progressBar = (ProgressBar)findViewById(R.id.bar);
         //this.counter = 0;
         startProgressBar();
+    }
+
+    private void HideActionBar(){
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+
     }
 
     private void startProgressBar(){
