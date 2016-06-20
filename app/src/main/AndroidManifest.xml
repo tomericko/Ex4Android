@@ -19,10 +19,13 @@
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"></activity>
+
+        <activity
+            android:name=".MessagesActivity"
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".LoginRegisterTabs"
             android:label="@string/title_activity_login">
-
         </activity>
         <activity
             android:name=".IntroductionScreen"

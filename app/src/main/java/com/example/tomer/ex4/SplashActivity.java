@@ -44,6 +44,7 @@ public class SplashActivity extends AppCompatActivity {
 
     class MyTimer extends TimerTask {
 
+
         float[] colors1 = {250, 40, 100};
         float[] colors2 = {120, 40, 100};
 
@@ -98,7 +99,7 @@ public class SplashActivity extends AppCompatActivity {
                 }//end of loop
 
 
-                Intent intent = new Intent(SplashActivity.this, LoginRegisterTabs.class);
+                Intent intent = new Intent(SplashActivity.this, MessagesActivity.class);
                 startActivity(intent);
             }
         });

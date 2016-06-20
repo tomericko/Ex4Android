@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="@string/login"
-                android:theme="@style/MyButton"
+                android:background="@drawable/mybtn"
                 android:layout_below="@+id/passwordTxt"
                 android:layout_centerHorizontal="true" />
 
@@ -47,10 +47,9 @@
                 android:paddingLeft="0dp"
                 android:drawablePadding="5dp"
                 android:textColorHint="#999"
+                android:background="@drawable/mydeittxt"
                 android:layout_below="@+id/nameTxt"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/transparent"/>
-
+                android:layout_centerHorizontal="true"/>
             <EditText
                 android:id="@+id/nameTxt"
                 android:drawableLeft="@drawable/account"
@@ -66,7 +65,7 @@
                 android:textColorHint="#999"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@android:color/transparent"/>
+                android:background="@drawable/mydeittxt"/>
         </RelativeLayout>
     </ScrollView>
 

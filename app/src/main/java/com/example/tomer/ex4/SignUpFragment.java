@@ -51,7 +51,6 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_sign_up,container, false);
-        signUpBtn = (Button)rootView.findViewById(R.id.btnSelectPhoto);
         iconView = (ImageView)rootView.findViewById(R.id.iconView);
         userNameTxt = (EditText)rootView.findViewById(R.id.nameTxt);
         passwordTxt = (EditText)rootView.findViewById(R.id.passwordTxt);
