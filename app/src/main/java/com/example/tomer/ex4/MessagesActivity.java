@@ -1,31 +1,19 @@
 package com.example.tomer.ex4;
 
-import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URI;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MessagesActivity extends AppCompatActivity {
 
@@ -41,6 +29,15 @@ public class MessagesActivity extends AppCompatActivity {
     private ShakeListener listener;
 
     private SwipeRefreshLayout swipeToRefreshLayout;
+
+
+    /*private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(getApplicationContext(), "received", Toast.LENGTH_SHORT).show();
+        }
+    };
+    private Intent timerServiceIntent;*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,12 +84,17 @@ public class MessagesActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 Toast.makeText(MessagesActivity.this, "mimimi", Toast.LENGTH_SHORT).show();
+                swipeToRefreshLayout.setRefreshing(false);
             }
         });
+
+        //timerServiceIntent = new Intent(this, TimerService.class);
+        //startService(timerServiceIntent);
     }
 
     @Override
     protected void onDestroy() {
+        //stopService(timerServiceIntent);
         super.onDestroy();
 
     }
@@ -129,15 +131,18 @@ public class MessagesActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        //unregisterReceiver(receiver);
         super.onPause();
         listener.pause();
     }
 
     @Override
     protected void onResume() {
+        //IntentFilter filter = new IntentFilter();
+        //filter.addAction(TimerService.BROADCAST_ACTION);
+        //registerReceiver(receiver, filter);
         super.onResume();
         listener.resume();
+        this.onDestroy();
     }
-
-
 }
