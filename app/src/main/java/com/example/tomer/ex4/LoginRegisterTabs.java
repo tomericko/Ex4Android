@@ -1,22 +1,19 @@
 package com.example.tomer.ex4;
 
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,11 +23,9 @@ public class LoginRegisterTabs extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private CoordinatorLayout ml;
-    private int[] tabIcons = {
-            R.drawable.key_variant,
-            R.drawable.plus,
-    };
+    private TextView logoTxt;
+    private LinearLayout ml;
+
 
 
     @Override
@@ -38,9 +33,11 @@ public class LoginRegisterTabs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register_tabs);
 
-        ml = (CoordinatorLayout) findViewById(R.id.main_layout);
+        ml = (LinearLayout) findViewById(R.id.main_layout);
 
-
+        logoTxt = (TextView) findViewById(R.id.logoTxt);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/INDIGO.TTF");
+        logoTxt.setTypeface(font);
         Timer timer = new Timer();
         MyTimer mt = new MyTimer();
         timer.schedule(mt, 50, 50);
@@ -49,7 +46,6 @@ public class LoginRegisterTabs extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
     }
 
     class MyTimer extends TimerTask {
@@ -74,15 +70,11 @@ public class LoginRegisterTabs extends AppCompatActivity {
     }
 
 
-    private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new SignInFragment(), "Sign In");
-        adapter.addFrag(new SignUpFragment(), "Sing Up");
+        adapter.addFrag(new SignInFragment(), "Login");
+        adapter.addFrag(new SignUpFragment(), "Register");
         viewPager.setAdapter(adapter);
     }
 

@@ -4,18 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import org.json.JSONObject;
 
@@ -31,10 +32,13 @@ public class SignInFragment extends Fragment {
 
 
     private View rootView;
-    private EditText nameView;
-    private EditText passwordView;
+    private EditText userNameTxt;
+    private EditText passwordTxt;
     private View loginFullView;
     private View loginInProgressView;
+    private ImageButton usernameResetBtn;
+    private ImageButton passwordResetBtn;
+    private Button signInBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,12 +51,20 @@ public class SignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_login,container, false);
-        nameView = (EditText)rootView.findViewById(R.id.nameTxt);
-        passwordView = (EditText)rootView.findViewById(R.id.passwordTxt);
         loginFullView = (View)rootView.findViewById(R.id.login_progress_bar);
         loginInProgressView = (View)rootView.findViewById(R.id.full_login);
 
-        Button signInBtn = (Button)rootView.findViewById(R.id.loginBtn);
+        userNameTxt = (EditText)rootView.findViewById(R.id.usernameTxt);
+        passwordTxt = (EditText)rootView.findViewById(R.id.passwordTxt);
+        usernameResetBtn = (ImageButton) rootView.findViewById(R.id.usernameResetBtn);
+        passwordResetBtn = (ImageButton) rootView.findViewById(R.id.passwordResetBtn);
+        usernameResetBtn.setVisibility(View.INVISIBLE);
+        passwordResetBtn.setVisibility(View.INVISIBLE);
+
+        setRemovableET(userNameTxt, usernameResetBtn);
+        setRemovableET(passwordTxt, passwordResetBtn);
+
+        signInBtn = (Button)rootView.findViewById(R.id.loginBtn);
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +72,7 @@ public class SignInFragment extends Fragment {
             }
         });
 
+        setButtonEnabled(signInBtn, false);
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -81,16 +94,16 @@ public class SignInFragment extends Fragment {
         View focusView = null;
 
 
-        String inputUsername = nameView.getText().toString();
-        String inputPassword = passwordView.getText().toString();
+        String inputUsername = userNameTxt.getText().toString();
+        String inputPassword = passwordTxt.getText().toString();
 
         if(TextUtils.isEmpty(inputUsername)){
-            nameView.setError(getString(R.string.error_field));
-            focusView = nameView;
+            userNameTxt.setError(getString(R.string.error_field));
+            focusView = userNameTxt;
             cancel = true;
         }else if(TextUtils.isEmpty(inputPassword)){
-            passwordView.setError(getString(R.string.error_field));
-            focusView = passwordView;
+            passwordTxt.setError(getString(R.string.error_field));
+            focusView = passwordTxt;
             cancel = true;
         }
 
@@ -119,6 +132,66 @@ public class SignInFragment extends Fragment {
             loginFullView.setVisibility(View.VISIBLE);
             loginInProgressView.setVisibility(View.GONE);
         }
+    }
+
+    private void setRemovableET(final EditText et, final ImageView resetIB) {
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus && et.getText().toString().length() > 0)
+                    resetIB.setVisibility(View.VISIBLE);
+                else
+                    resetIB.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        resetIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et.setText("");
+                resetIB.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0){
+                    resetIB.setVisibility(View.VISIBLE);
+                }else{
+                    resetIB.setVisibility(View.INVISIBLE);
+                }
+                if (userNameTxt.getText().toString().equals("") || passwordTxt.getText().toString().equals(""))
+                {
+                    setButtonEnabled(signInBtn, false);
+                }
+                else
+                {
+                    setButtonEnabled(signInBtn, true);
+                }
+            }
+        });
+    }
+
+    private void setButtonEnabled(Button btn, boolean enable)
+    {
+        if (enable)
+        {
+            btn.setBackgroundResource(R.drawable.enablebtn);
+        }
+        else
+        {
+            btn.setBackgroundResource(R.drawable.disablebtn);
+        }
+        btn.setEnabled(enable);
     }
 
 
@@ -164,6 +237,5 @@ public class SignInFragment extends Fragment {
 
         }
         return null;
-
     }
 }

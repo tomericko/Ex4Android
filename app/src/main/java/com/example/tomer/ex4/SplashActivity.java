@@ -99,7 +99,7 @@ public class SplashActivity extends AppCompatActivity {
                 }//end of loop
 
 
-                Intent intent = new Intent(SplashActivity.this, MessagesActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginRegisterTabs.class);
                 startActivity(intent);
             }
         });

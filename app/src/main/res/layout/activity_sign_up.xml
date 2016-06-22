@@ -17,6 +17,166 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iconView"
+            android:src="@null"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <FrameLayout
+            android:id="@+id/userNameFrm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iconView"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/usernameTxt"
+                android:drawableLeft="@drawable/account"
+                android:hint="Username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:drawableRight="@drawable/transparent"
+                android:ems="10"
+                android:textColor="#FFF"
+                android:textColorHint="@color/translucent_grey"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="0dp"
+                android:drawablePadding="5dp"
+                android:background="@drawable/mydeittxt"/>
+
+            <ImageButton
+            android:id="@+id/usernameResetBtn"
+            android:src="@drawable/reset_cricle"
+            android:background="@null"
+            android:layout_gravity="right|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/passwordFrm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userNameFrm"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/passwordTxt"
+                android:drawableLeft="@drawable/lock"
+                android:hint="Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:drawableRight="@drawable/transparent"
+                android:ems="10"
+                android:textColor="#FFF"
+                android:textColorHint="@color/translucent_grey"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="0dp"
+                android:drawablePadding="5dp"
+                android:background="@drawable/mydeittxt"/>
+
+            <ImageButton
+                android:id="@+id/passwordResetBtn"
+                android:src="@drawable/reset_cricle"
+                android:background="@null"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/emailFrm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/passwordFrm"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/emailTxt"
+                android:drawableLeft="@drawable/email"
+                android:hint="Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:drawableRight="@drawable/transparent"
+                android:ems="10"
+                android:textColor="#FFF"
+                android:textColorHint="@color/translucent_grey"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="0dp"
+                android:drawablePadding="5dp"
+                android:background="@drawable/mydeittxt"/>
+
+            <ImageButton
+                android:id="@+id/emailResetBtn"
+                android:src="@drawable/reset_cricle"
+                android:background="@null"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/nameFrm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailFrm"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/nameTxt"
+                android:drawableLeft="@drawable/emoticon_cool"
+                android:hint="Full Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:drawableRight="@drawable/transparent"
+                android:ems="10"
+                android:textColor="#FFF"
+                android:textColorHint="@color/translucent_grey"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:paddingLeft="0dp"
+                android:drawablePadding="5dp"
+                android:background="@drawable/mydeittxt"/>
+
+            <ImageButton
+                android:id="@+id/nameResetBtn"
+                android:src="@drawable/reset_cricle"
+                android:background="@null"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp" />
+
+        </FrameLayout>
+
         <Button
             android:id="@+id/signUpBtn"
             android:text="@string/signup"
@@ -24,86 +184,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/MyButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_below="@+id/name"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:id="@+id/name"
-            android:drawableLeft="@drawable/emoticon_cool"
-            android:hint="Full Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:textColor="#FFF"
-            android:layout_margin="10dp"
-            android:paddingLeft="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#999"
-            android:layout_below="@+id/emailTxt"
-            android:background="@android:color/transparent"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:id="@+id/emailTxt"
-            android:drawableLeft="@drawable/email"
-            android:hint="Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:textColor="#FFF"
-            android:layout_margin="10dp"
-            android:paddingLeft="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#999"
-            android:layout_below="@+id/passwordTxt"
-            android:background="@android:color/transparent"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:id="@+id/passwordTxt"
-            android:drawableLeft="@drawable/lock"
-            android:hint="Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:textColor="#FFF"
-            android:layout_margin="10dp"
-            android:paddingLeft="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#999"
-            android:layout_below="@+id/usernameTxt"
-            android:background="@android:color/transparent"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:id="@+id/usernameTxt"
-            android:drawableLeft="@drawable/account"
-            android:hint="Username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:textColor="#FFF"
-            android:layout_margin="10dp"
-            android:paddingLeft="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#999"
-            android:layout_below="@+id/iconView"
-            android:background="@android:color/transparent"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/iconView"
-            android:src="@drawable/logo"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/nameFrm"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/enablebtn"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

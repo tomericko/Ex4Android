@@ -16,13 +16,94 @@
     <ScrollView
         android:id="@+id/full_login"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/logo">
+        android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/userNameFrm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iconView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:id="@+id/usernameTxt"
+                    android:drawableLeft="@drawable/account"
+                    android:hint="Username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:drawableRight="@drawable/transparent"
+                    android:ems="10"
+                    android:textColor="#FFF"
+                    android:textColorHint="@color/translucent_grey"
+                    android:padding="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:paddingLeft="0dp"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/mydeittxt"/>
+
+                <ImageButton
+                    android:id="@+id/usernameResetBtn"
+                    android:src="@drawable/reset_cricle"
+                    android:background="@null"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="15dp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/passwordFrm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userNameFrm"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:id="@+id/passwordTxt"
+                    android:drawableLeft="@drawable/lock"
+                    android:hint="Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:drawableRight="@drawable/transparent"
+                    android:ems="10"
+                    android:textColor="#FFF"
+                    android:textColorHint="@color/translucent_grey"
+                    android:padding="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:paddingLeft="0dp"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/mydeittxt"/>
+
+                <ImageButton
+                    android:id="@+id/passwordResetBtn"
+                    android:src="@drawable/reset_cricle"
+                    android:background="@null"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="15dp" />
+
+            </FrameLayout>
+
+
 
             <Button
                 android:id="@+id/loginBtn"
@@ -30,42 +111,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="@string/login"
-                android:background="@drawable/mybtn"
-                android:layout_below="@+id/passwordTxt"
+                android:theme="@style/MyButton"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/enablebtn"
+                android:layout_below="@+id/passwordFrm"
                 android:layout_centerHorizontal="true" />
-
-            <EditText
-                android:id="@+id/passwordTxt"
-                android:drawableLeft="@drawable/lock"
-                android:hint="Password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:textColor="#FFF"
-                android:layout_margin="10dp"
-                android:paddingLeft="0dp"
-                android:drawablePadding="5dp"
-                android:textColorHint="#999"
-                android:background="@drawable/mydeittxt"
-                android:layout_below="@+id/nameTxt"
-                android:layout_centerHorizontal="true"/>
-            <EditText
-                android:id="@+id/nameTxt"
-                android:drawableLeft="@drawable/account"
-                android:hint="Username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:textColor="#FFF"
-                android:layout_margin="10dp"
-                android:paddingLeft="0dp"
-                android:drawablePadding="5dp"
-                android:textColorHint="#999"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/mydeittxt"/>
         </RelativeLayout>
     </ScrollView>
 

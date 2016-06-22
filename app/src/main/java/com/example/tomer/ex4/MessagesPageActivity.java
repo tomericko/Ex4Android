@@ -1,8 +1,16 @@
 package com.example.tomer.ex4;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +23,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessagesActivity extends AppCompatActivity {
+public class MessagesPageActivity extends AppCompatActivity {
 
     private int a = 0;
 
@@ -31,13 +39,35 @@ public class MessagesActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeToRefreshLayout;
 
 
-    /*private BroadcastReceiver receiver = new BroadcastReceiver() {
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(getApplicationContext(), "received", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MessagesPageActivity.this, "received", Toast.LENGTH_SHORT).show();
+
+            NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent in = new Intent(context,MessagesPageActivity.class);
+            PendingIntent pending=PendingIntent.getActivity(context, 0, in, 0);
+            Notification.Builder builder = new Notification.Builder(context)
+                    .setContentTitle("Title")
+                    .setContentText(
+                            "Text").setSmallIcon(R.drawable.email)
+                    .setContentIntent(pending).setWhen(System.currentTimeMillis()).setAutoCancel(true);
+
+            Notification notification;
+            if (android.os.Build.VERSION.SDK_INT>16)
+            {
+                notification = builder.getNotification();
+            }else
+            {
+                notification = builder.build();
+            }
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            notification.defaults |= Notification.DEFAULT_SOUND;
+            notificationManager.notify(5, notification);
+
         }
     };
-    private Intent timerServiceIntent;*/
+    private Intent timerServiceIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,18 +113,21 @@ public class MessagesActivity extends AppCompatActivity {
         swipeToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Toast.makeText(MessagesActivity.this, "mimimi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MessagesPageActivity.this, "mimimi", Toast.LENGTH_SHORT).show();
                 swipeToRefreshLayout.setRefreshing(false);
             }
         });
 
-        //timerServiceIntent = new Intent(this, TimerService.class);
-        //startService(timerServiceIntent);
+        timerServiceIntent = new Intent(this, TimerService.class);
+        startService(timerServiceIntent);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(TimerService.BROADCAST_ACTION);
+        registerReceiver(receiver, filter);
     }
 
     @Override
     protected void onDestroy() {
-        //stopService(timerServiceIntent);
+        stopService(timerServiceIntent);
         super.onDestroy();
 
     }
@@ -143,6 +176,5 @@ public class MessagesActivity extends AppCompatActivity {
         //registerReceiver(receiver, filter);
         super.onResume();
         listener.resume();
-        this.onDestroy();
     }
 }
